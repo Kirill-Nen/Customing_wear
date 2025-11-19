@@ -4,7 +4,7 @@ const canvas = new Canvas
 class Main {
     constructor() {
         this.colors = ['red', 'yellow', 'green', 'blue', 'white', 'black'];
-        this.modes = ['drawing_line']
+        this.modes = ['drawing_line', 'free_drawing']
 
         this.activeColorBackground = this.colors[0]
         this.drawingMode = null
@@ -54,6 +54,10 @@ class Main {
                 const width_line = document.querySelector('#width-line').value || 2
 
                 canvas.getMouseClick(this.drawingMode, [color_line, width_line])
+            }  else if (e.target.classList.contains('free-drawing')) {
+                this.drawingMode = this.modes[1]
+
+                canvas.getMouseClick(this.drawingMode, [undefined, undefined])
             } else {
                 this.drawingMode = null
                 canvas.getMouseClick(this.drawingMode)
