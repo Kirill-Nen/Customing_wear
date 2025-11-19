@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>МоднаЯРусь</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="main">
+        <div class="panels">
+            <div class="color-list">
+                <h3>Выберите цвет фона:</h3>
+            </div>
+            <div class="button-container">
+                <input type="text" placeholder="Введите цвет линии" id="color-line">
+                <input type="text" placeholder="Введите толщину линии" id="width-line">
+                <button class="line-on">Нажмите чтобы включить режим рисования линий</button>
+                <button class="line-off">Отмена</button>
+            </div>
+        </div>
+        <div class="canvas-container">
+            <canvas id="canvas"></canvas>
+        </div>
+    </div>
+    <script src="/node_modules/fabric/dist/index.min.js"></script>
+    <script src="main.js" type="module"></script>
+</body>
+</html>

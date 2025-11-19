@@ -1,0 +1,44 @@
+body {
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 25px;
+}
+
+.panels {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.color-list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.color-button {
+    height: 20px;
+    width: 20px;
+    margin-left: 15px;
+    border: none;
+
+    transition: transform 1s ease;
+}
+
+.color-button:hover {
+    transform: scale(2);
+}
+
+.active-color-button {
+    border: 2px solid black;
+}
+
+#canvas {
+    border: 5px solid black;
+}
