@@ -383,4 +383,9 @@ export default class Canvas {
             this.canvas.renderAll();
         })
     }
+
+    clearCanvas(colorBackground) {
+        this.canvas.remove(this.container_group)
+        this.createContainer(colorBackground)
+    }
 }

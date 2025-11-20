@@ -1,33 +1,193 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>МоднаЯРусь</title>
+    <title>МоднаЯРусь | Конструктор дизайна</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="main">
-        <div class="panels">
-            <div class="color-list">
-                <h3>Выберите цвет фона:</h3>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="header-content">
+                <h1 class="logo">
+                    <span class="logo-accent">Модна</span>ЯРусь
+                </h1>
+                <div class="header-actions">
+                    <button class="btn-secondary" id="save-btn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke="currentColor" stroke-width="2"/>
+                            <polyline points="3.29 7 12 12 20.73 7" stroke="currentColor" stroke-width="2"/>
+                            <line x1="12" y1="22" x2="12" y2="12" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        Сохранить
+                    </button>
+                    <button class="btn-primary" id="export-btn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="currentColor" stroke-width="2"/>
+                            <polyline points="14,2 14,8 20,8" stroke="currentColor" stroke-width="2"/>
+                            <line x1="16" y1="13" x2="8" y2="13" stroke="currentColor" stroke-width="2"/>
+                            <line x1="16" y1="17" x2="8" y2="17" stroke="currentColor" stroke-width="2"/>
+                            <polyline points="10,9 9,9 8,9" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        Экспорт
+                    </button>
+                </div>
             </div>
-            <div class="button-container">
-                <input type="text" placeholder="Введите цвет линии" id="color-line">
-                <input type="text" placeholder="Введите толщину линии" id="width-line">
-                <input type="text" placeholder="Введите цвет заливки (если требуется)" id="fill-line">
-                <button class="line-on">Нажмите чтобы включить режим рисования линий</button>
-                <button class="free-drawing">Рисовать мышью</button>
-                <button class="rect">Прямоугольник</button>
-                <button class="circle">Круг</button>
-                <button class="triage">Треугольник</button>
-                <button class="path">Полилиния</button>
-                <button class="line-off">Отмена</button>
+        </header>
+
+        <div class="main-content">
+            <aside class="control-panel">
+                <section class="panel-section">
+                    <h3 class="section-title">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                            <path d="M7 21a4 4 0 0 1-4-4V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v12a4 4 0 0 1-4 4zm0 0H3m4 0h4m4 0a4 4 0 0 0 4-4V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v12a4 4 0 0 0 4 4z" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        Цвет футболки
+                    </h3>
+                    <div class="color-grid" id="colorGrid">
+                    </div>
+                </section>
+
+                <section class="panel-section">
+                    <h3 class="section-title">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="currentColor" stroke-width="2"/>
+                            <polyline points="14,2 14,8 20,8" stroke="currentColor" stroke-width="2"/>
+                            <line x1="16" y1="13" x2="8" y2="13" stroke="currentColor" stroke-width="2"/>
+                            <line x1="16" y1="17" x2="8" y2="17" stroke="currentColor" stroke-width="2"/>
+                            <polyline points="10,9 9,9 8,9" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        Настройки рисования
+                    </h3>
+                    
+                    <div class="input-group">
+                        <label class="input-label">Цвет линии</label>
+                        <div class="color-input-wrapper">
+                            <input type="color" id="color-line" class="color-picker" value="#000000">
+                            <span class="color-value" id="color-line-value">#000000</span>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label class="input-label">Толщина линии</label>
+                        <div class="range-input-wrapper">
+                            <input type="range" id="width-line" class="range-slider" min="1" max="20" value="2">
+                            <span class="range-value" id="width-line-value">2px</span>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label class="input-label">Цвет заливки</label>
+                        <div class="color-input-wrapper">
+                            <input type="color" id="fill-line" class="color-picker" value="#ffffff">
+                            <span class="color-value" id="fill-line-value">#FFFFFF</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="panel-section">
+                    <h3 class="section-title">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 19l7-7 3 3-7 7-3-3z" stroke="currentColor" stroke-width="2"/>
+                            <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" stroke="currentColor" stroke-width="2"/>
+                            <path d="M2 2l7.586 7.586" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="11" cy="11" r="2" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        Инструменты
+                    </h3>
+                    
+                    <div class="tools-grid">
+                        <button class="tool-btn active" data-tool="free-drawing" id="tool-free">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            Кисть
+                        </button>
+                        
+                        <button class="tool-btn" data-tool="line" id="tool-line">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <line x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            Линия
+                        </button>
+                        
+                        <button class="tool-btn" data-tool="rect" id="tool-rect">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            Прямоугольник
+                        </button>
+                        
+                        <button class="tool-btn" data-tool="circle" id="tool-circle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            Круг
+                        </button>
+                        
+                        <button class="tool-btn" data-tool="triangle" id="tool-triangle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            Треугольник
+                        </button>
+                        
+                        <button class="tool-btn" data-tool="path" id="tool-path">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <polyline points="3.5,3.5 8.5,8.5 12,5.5 15.5,9.5 19.5,5.5" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            Кривая
+                        </button>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button class="btn-danger" id="clear-btn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                <polyline points="3,6 5,6 21,6" stroke="currentColor" stroke-width="2"/>
+                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            Очистить
+                        </button>
+                        
+                        <button class="btn-secondary" id="cancel-btn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                <line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2"/>
+                                <line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            Отмена
+                        </button>
+                    </div>
+                </section>
+            </aside>
+
+            <main class="canvas-area">
+                <div class="canvas-container">
+                    <div class="canvas-frame">
+                        <canvas id="canvas"></canvas>
+                    </div>
+                    <div class="canvas-overlay">
+                        <div class="tool-indicator">
+                            <span id="currentTool">Кисть</span>
+                        </div>
+                        <div class="canvas-stats">
+                            <span>800 × 600</span>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <footer class="status-bar">
+            <div class="status-content">
+                <span class="status-text" id="statusText">Готов к работе</span>
+                <div class="status-actions">
+                    <span class="hint">Ctrl+Z - Отменить</span>
+                    <span class="hint">Ctrl+S - Сохранить</span>
+                </div>
             </div>
-        </div>
-        <div class="canvas-container">
-            <canvas id="canvas"></canvas>
-        </div>
+        </footer>
     </div>
     <script src="/node_modules/fabric/dist/index.min.js"></script>
     <script src="main.js" type="module"></script>
