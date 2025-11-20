@@ -108,7 +108,10 @@ export default class Canvas {
             fill: options[2] || 'transparent',
             stroke: options[0] || 'black',
             strokeWidth: parseInt(options[1]) || 2,
-            selectable: false
+            selectable: true,   
+            evented: true,       
+            hasControls: true,     
+            hasBorders: true 
         });
 
         this.canvas.add(this.tempShape);
