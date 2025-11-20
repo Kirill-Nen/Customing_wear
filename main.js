@@ -4,7 +4,7 @@ const canvas = new Canvas
 class Main {
     constructor() {
         this.colors = ['red', 'yellow', 'green', 'blue', 'white', 'black'];
-        this.modes = ['drawing_line', 'free_drawing']
+        this.modes = ['drawing_line', 'free_drawing', 'drawing_rect', 'drawing_triangle', 'drawing_circle', 'drawing_path']
 
         this.activeColorBackground = this.colors[0]
         this.drawingMode = null
@@ -47,17 +47,19 @@ class Main {
 
     drawingModeControll() {
         document.querySelector('.button-container').addEventListener('click', (e) => {
+            const color_line = document.querySelector('#color-line').value || 'black'
+            const width_line = document.querySelector('#width-line').value || 2
             if (e.target.classList.contains('line-on')) {
                 this.drawingMode = this.modes[0]
-
-                const color_line = document.querySelector('#color-line').value || 'black'
-                const width_line = document.querySelector('#width-line').value || 2
-
                 canvas.getMouseClick(this.drawingMode, [color_line, width_line])
             }  else if (e.target.classList.contains('free-drawing')) {
                 this.drawingMode = this.modes[1]
 
-                canvas.getMouseClick(this.drawingMode, [undefined, undefined])
+                canvas.getMouseClick(this.drawingMode, [color_line, width_line])
+            } else if (e.target.classList.contains('rect')) {
+                this.drawingMode = this.modes[2]
+
+                canvas.getMouseClick(this.drawingMode, ['black', 2, 'red'])
             } else {
                 this.drawingMode = null
                 canvas.getMouseClick(this.drawingMode)
