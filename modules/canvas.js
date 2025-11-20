@@ -22,10 +22,10 @@ export default class Canvas {
             fill: colorBackground,
             stroke: 'black',
             strokeWidth: 2,
-            selectable: true,
-            evented: true,
-            hasControls: true,
-            hasBorders: true,
+            selectable: false,
+            evented: false,
+            hasControls: false,
+            hasBorders: false,
         });
 
         setTimeout(() => {
@@ -108,10 +108,8 @@ export default class Canvas {
             fill: options[2] || 'transparent',
             stroke: options[0] || 'black',
             strokeWidth: parseInt(options[1]) || 2,
-            selectable: true,   
-            evented: true,       
-            hasControls: true,     
-            hasBorders: true 
+            selectable: false,
+            strokeDashArray: [3, 3]
         });
 
         this.canvas.add(this.tempShape);
@@ -158,10 +156,11 @@ export default class Canvas {
             top: startY,
             width: 0,
             height: 0,
-            fill: options.fill || 'transparent',
+            fill: options[2] || 'transparent',
             stroke: options[0] || 'black',
             strokeWidth: parseInt(options[1]) || 2,
-            selectable: false
+            selectable: false,
+            strokeDashArray: [3, 3]
         });
 
         this.canvas.add(this.tempShape);
@@ -205,10 +204,11 @@ export default class Canvas {
             left: startX,
             top: startY,
             radius: 0,
-            fill: options.fill || 'transparent',
+            fill: options[2] || 'transparent',
             stroke: options[0] || 'black',
             strokeWidth: parseInt(options[1]) || 2,
-            selectable: false
+            selectable: false,
+            strokeDashArray: [3, 3]
         });
 
         this.canvas.add(this.tempShape);
@@ -256,7 +256,8 @@ export default class Canvas {
                 stroke: options[0] || 'black',
                 strokeWidth: parseInt(options[1]) || 2,
                 fill: '',
-                selectable: false
+                selectable: false,
+                strokeDashArray: [3, 3]
             });
             this.canvas.add(this.tempShape);
         } 
@@ -306,7 +307,8 @@ export default class Canvas {
         shape.set({
             selectable: true,
             hasControls: true,
-            evented: true
+            evented: true,
+            strokeDashArray: []
         });
 
         this.canvas.remove(this.tempShape);

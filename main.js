@@ -49,17 +49,25 @@ class Main {
         document.querySelector('.button-container').addEventListener('click', (e) => {
             const color_line = document.querySelector('#color-line').value || 'black'
             const width_line = document.querySelector('#width-line').value || 2
+            const fill_line = document.querySelector('#fill-line').value || 'white'
             if (e.target.classList.contains('line-on')) {
                 this.drawingMode = this.modes[0]
                 canvas.getMouseClick(this.drawingMode, [color_line, width_line])
             }  else if (e.target.classList.contains('free-drawing')) {
                 this.drawingMode = this.modes[1]
-
                 canvas.getMouseClick(this.drawingMode, [color_line, width_line])
             } else if (e.target.classList.contains('rect')) {
                 this.drawingMode = this.modes[2]
-
-                canvas.getMouseClick(this.drawingMode, ['black', 2, 'red'])
+                canvas.getMouseClick(this.drawingMode, [color_line, width_line, fill_line])
+            } else if (e.target.classList.contains('triage')) {
+                this.drawingMode = this.modes[3]
+                canvas.getMouseClick(this.drawingMode, [color_line, width_line, fill_line])
+            } else if (e.target.classList.contains('circle')) {
+                this.drawingMode = this.modes[4]
+                canvas.getMouseClick(this.drawingMode, [color_line, width_line, fill_line])
+            } else if (e.target.classList.contains('path')) {
+                this.drawingMode = this.modes[5]
+                canvas.getMouseClick(this.drawingMode, [color_line, width_line])
             } else {
                 this.drawingMode = null
                 canvas.getMouseClick(this.drawingMode)
